@@ -11,7 +11,6 @@ document.addEventListener('DOMContentLoaded', function() {
     initTypingEffect();
     initSkillBars();
     initScrollAnimations();
-    initThemeToggle();
     initContactForm();
     initBackToTop();
 });
@@ -281,43 +280,8 @@ function initScrollAnimations() {
     setTimeout(checkScroll, 300);
 }
 
-/**
- * Theme toggle functionality (light/dark mode)
- */
-function initThemeToggle() {
-    const themeToggle = document.querySelector('.theme-toggle');
-    const themeIcon = themeToggle.querySelector('i');
-    const prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    
-    // Check for saved theme preference or use OS preference
-    const currentTheme = localStorage.getItem('theme') || 
-                        (prefersDarkScheme.matches ? 'dark' : 'light');
-    
-    // Set initial theme
-    if (currentTheme === 'dark') {
-        document.body.classList.add('dark-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
-    }
-    
-    // Toggle theme on click
-    themeToggle.addEventListener('click', function(e) {
-        e.preventDefault();
-        
-        document.body.classList.toggle('dark-mode');
-        
-        // Update icon
-        if (document.body.classList.contains('dark-mode')) {
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
-            localStorage.setItem('theme', 'dark');
-        } else {
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
-            localStorage.setItem('theme', 'light');
-        }
-    });
-}
+
+
 
 /**
  * Contact form validation and submission
